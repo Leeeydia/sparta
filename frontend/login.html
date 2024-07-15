@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap');
+*{font-family: "Gowun Batang", serif;}
+.mytitle {
+  width: 300px;
+  height: 200px;
+  background-color: aquamarine;
+  color: white;
+  text-align: center;
+  /* class의 선택자가 # 아니었나 ? ?  */
+
+  padding-top:30px ;
+  border-radius: 8px;
+  background-image: url(https://www.ancient-origins.net/sites/default/files/field/image/Agesilaus-II-cover.jpg);
+  background-position:center;
+  background-size:cover ;
+
+}
+.wrap{
+  width: 300px;
+  margin: 50px auto 0px auto;
+  /* div태그 이용해서 묶은다음, 백그라운드 컬러 설정하고 설정하면 깔끔하게 만들 수 있음 */
+}
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="mytitle">
+      <h1>로그인 페이지</h1>
+      <h5>아이디, 비밀번호를 입력해주세요.</h5>
+    </div>
+   <p>ID : <input type="text"></p>
+   <p>password : <input type="text"></p>
+   <p><input type="button" value="로그인하기"></p>
+    
+  </div>
+</body>
+</html>
