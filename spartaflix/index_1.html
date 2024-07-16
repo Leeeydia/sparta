@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>스파르타플릭스</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -60,18 +61,8 @@
   </style>
   <script>
     function hey() {
-      $('#title').text('쥬라기월드');
-    }
-    // let ages = { 15, 30, 28, 7, 40, 13};
-
-    // ages.forEach(a => {
-    //   if (a < 20) {
-    //     console.log('청소년입니다')
-    //   } else {
-    //     console.log('성인입니다')
-    //   }
-    // }); ---> 조건문
-
+$('#title').text('쥬라기월드');
+}
   </script>
 
 </head>
@@ -108,10 +99,10 @@
   </header>
   <div class="main">
     <div class="container-fluid py-5">
-      <h1 id="title" class="display-5 fw-bold">쥬라기월드</h1>
+      <h1 id="title" class="display-5 fw-bold">킹덤</h1>
       <p class="col-md-8 fs-4">병든 왕을 둘러싸고 흉흉한 소문이 떠돈다. 어둠에 뒤덮인 조선, 기이한 역병에 신음하는 신하. 정체모를 악에 맞서 백성을 구원할 희망은 오직 세자 뿐 이다.
       </p>
-      <button type="button" class="btn btn-outline-light">영화 기록하기</button>
+      <button onclick="hey()"      type="button" class="btn btn-outline-light">영화 기록하기</button>
       <button type="button" class="btn btn-outline-light">상세정보</button>
     </div>
   </div>
