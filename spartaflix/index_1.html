@@ -95,22 +95,52 @@
         'star': star
 
       };
-      await addDoc(collection(db, "movies"), doc);
-      alert('저장 완료!')
-      window.location.reload();
-    })
-    
-    $(document).ready(function () {
-      let url = "http://spartacodingclub.shop/sparta_api/weather/seoul";
-      fetch(url).then(res => res.json()).then(data => {
-        let temp = data['temp'];
-        $('#tpt').text(temp);
-      })
-    })
+   
     $("#savebtn").click(async function () {
       $('#postingbox').toggle();
     })
-  
+
+    await addDoc(collection(db, "movies"), doc);
+      alert('저장 완료!')
+      window.location.reload();
+    })
+    let url = "http://spartacodingclub.shop/sparta_api/weather/seoul";
+    fetch(url).then(res => res.json()).then(data => {
+      let temp = data['temp'];
+      if (temp > 20) {
+        $('#msg').text('더워요');
+      } else {
+        $('#msg').text('추워요');
+      }
+    })
+
+    let docs = await getDocs(collection(db, "movies"));
+    docs.forEach((doc) => {
+      let row = doc.data();
+      let image = row['image'];
+      let title = row['title'];
+      let comment = row['comment'];
+      let star = row['star'];
+
+      let temp_html = `           
+            <div class="col">
+                <div class="card">
+                    <img src="${image}"
+                        class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">${title}</h5>
+                        <p class="card-text">${star}</p>
+                        <p class="card-text">${comment}</p>
+                    </div>
+                </div>
+            </div>`;
+      $('#card').append(temp_html);
+    });
+    
+    $("#savebtn").click(async function () {
+      $('#postingbox').toggle();
+    })
+
   </script>
 
 </head>
@@ -151,7 +181,7 @@
       <h1 class="display-5 fw-bold">킹덤</h1>
       <p class="col-md-8 fs-4">병든 왕을 둘러싸고 흉흉한 소문이 떠돈다. 어둠에 뒤덮인 조선, 기이한 역병에 신음하는 신하. 정체모를 악에 맞서 백성을 구원할 희망은 오직 세자 뿐 이다.
       </p>
-      <button id="savebtn"  type="button" class="btn btn-outline-light">영화 기록하기</button>
+      <button id="savebtn" type="button" class="btn btn-outline-light">영화 기록하기</button>
       <button type="button" class="btn btn-outline-light">상세정보</button>
     </div>
   </div>
@@ -183,52 +213,8 @@
   </div>
 
   <div class="mycards">
-    <div class="row row-cols-1 row-cols-md-4 g-4">
-      <div class="col">
-        <div class="card">
-          <img src="https://movie-phinf.pstatic.net/20210728_221/1627440327667GyoYj_JPEG/movie_image.jpg"
-            class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">영화 제목</h5>
-            <p class="card-text">⭐⭐⭐</p>
-            <p class="card-text">영화 코멘트</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col">
-        <div class="card">
-          <img src="https://movie-phinf.pstatic.net/20210728_221/1627440327667GyoYj_JPEG/movie_image.jpg"
-            class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">영화 제목</h5>
-            <p class="card-text">⭐⭐⭐</p>
-            <p class="card-text">영화 코멘트</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <img src="https://movie-phinf.pstatic.net/20210728_221/1627440327667GyoYj_JPEG/movie_image.jpg"
-            class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">영화 제목</h5>
-            <p class="card-text">⭐⭐⭐</p>
-            <p class="card-text">영화 코멘트</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <img src="https://movie-phinf.pstatic.net/20210728_221/1627440327667GyoYj_JPEG/movie_image.jpg"
-            class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">영화 제목</h5>
-            <p class="card-text">⭐⭐⭐</p>
-            <p class="card-text">영화 코멘트</p>
-          </div>
-        </div>
-      </div>
+    <div id="card" class="row row-cols-1 row-cols-md-4 g-4">
+ 
 </body>
 
 </html>
